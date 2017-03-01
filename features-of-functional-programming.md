@@ -3,6 +3,7 @@
 I saw a post in another group on the features of OOP and was inspired to put together my own post (because I hate OOP)!
 
 Features of functional programming:
+
 1. Functions as first class-citizens
 2. Referential transparency 
 3. Function type signatures
