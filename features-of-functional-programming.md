@@ -10,7 +10,7 @@ Features of functional programming:
 4. Currying 
 5. Partial application
 6. Inheritance through function composition 
-7. Functors
+7. Higher-Order Functions
 8. Categories
 9. Groups
 10. Monoids
@@ -70,20 +70,20 @@ function sumSqrs(a) {
 
 The function `square` was applied on `a`, and that result was passed into an application of `sum` returned by `sumSqrs` applied with `a`.
 
-Functions can be passed into other functions as arguments or be returned from functions. Such functions are called *functors*, or *higher-order functions* (but there's a subtle distinction between these two terms that's relatively unimportant for this article). Example:
+Functions can be passed into other functions as arguments or be returned from functions. Such functions that take and return functions are called *higher-order functions*. Example:
 
 ```
 [1,2,3,4,5].map(function(x) {
-  return x*2;
+  return Math.pow(x, 2);
 });
-=> [2,4,6,8,10]
+=> [1,4,9,16,25]
 ```
 
-Here I'm going to be throwing some terminology at you that will help you understand oft-mentioned topics in functional programming and mathematics.
+Here I'm going to be throwing some terminology at you that will help you understand oft-mentioned topics in functional programming and mathematics. Even if you don't understand these now, it's good to at least be aware of them.
 
 *Categories* are groups of data and functions relating that data. They're the building blocks of *category theory*, a branch of mathematics that generalizes a bunch of other branches of mathematics like formal logics, combinatorics, and topology. Category theory is often the basis for pure functional programming languages, and learning a bit about this will only ever help you use these languages to their fullest, though an understanding of it is not required, so don't freak out if you can't understand it. 
 
-A function mapping a category to itself is called an *endofunctor* and that operation is part of the basic laws of how functions work. It's a scary word, but a simple thing, so don't run for the hills yet. 
+A mapping from one category to another (preserving their structure) is called a *functor*. A function mapping a category to itself is called an *endofunctor* and that operation is part of the basic laws of how functions work. Scary words, but simple things, so don't run for the hills yet. 
 
 A *group* is a set and a rule for transforming any two elements of the set into a value. A classic example is a set of integers with the addition operation, making a third element: the addition of two of the group's elements. 
 
