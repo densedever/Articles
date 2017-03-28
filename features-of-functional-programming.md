@@ -92,7 +92,8 @@ A *group* is a set and a rule for transforming any two elements of the set into 
 A *monad* is a category mapped to itself that comes packaged with some methods to transform it (that morph one functor into another): 
   * a transformation from an identity to an endofunctor, 
   * and from an endofunctor to itself. 
-They're often used for pulling values out of nested structures or combining impure function operations. 
+
+Monads are often used for pulling values out of nested structures or combining impure function operations. 
 
 *Closures* are functions that use data inside them when you call them. Example: 
 
