@@ -11,7 +11,7 @@ I'm assuming you already know the trifecta of web languages, so I won't spend ti
 
 ## What is Functional Programming?
 
-FP uses [mathematical functions](https://en.wikipedia.org/wiki/Function_(mathematics)) to return values and pass/accept data, and does not use any mutable (changeable) state at all. Functions rule this world of programming. There are no loops, no statements, no procedures, no class/object hierarchies, no exception handling, and no need for them either! There's nothing but functions that take values and return values. Yes, you can actually program productively this way!
+FP uses [mathematical functions](https://en.wikipedia.org/wiki/Function_(mathematics)) to return values and pass/accept data, and does not use any mutable (changeable) state at all. Functions rule this world of programming. There are no loops, no statements, no procedures, no class/object hierarchies, no exception handling, and *no need for them either*! There's nothing but functions that take values and return values. Yes, you can actually program productively this way!
 
 It's a style of declarative programming, telling the computer **what** results you want, rather than telling the computer **how** to calculate the results and give them to you. Instead of laying out a series of **steps**, you're declaring a series of **facts**. It's a terse and expressive coding style that's easy on the mind and does more with less code. 
 
