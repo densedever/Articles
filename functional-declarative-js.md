@@ -1,29 +1,29 @@
-#Functional and Declarative JavaScript
+# Functional and Declarative JavaScript
 
-###By densedever, 2015
+### By densedever, 2015
 
-##Intro
+## Intro
 
 This doc is going to introduce you to functional programming in JavaScript. Functional programming (FP) is undoubtedly a growing trend in the development world, even outside of the web, and learning it can only help you as you start to get exposed to it, if only to understand other people's code. 
 
 I'm assuming you already know the trifecta of web languages, so I won't spend time on the syntax and everything. There are plenty of excellent resources for that already. I do not assume you know what "imperative", "functional" or "declarative" means, and that will be the subject of this text.
 
 
-##What is Functional Programming?
+## What is Functional Programming?
 
 FP uses [mathematical functions](https://en.wikipedia.org/wiki/Function_(mathematics)) to return values and pass/accept data, and does not use any mutable (changeable) state at all. Functions rule this world of programming. There are no loops, no statements, no procedures, no class/object hierarchies, no exception handling, and no need for them either! There's nothing but functions that take values and return values. Yes, you can actually program productively this way!
 
 It's a style of declarative programming, telling the computer **what** results you want, rather than telling the computer **how** to calculate the results and give them to you. Instead of laying out a series of **steps**, you're declaring a series of **facts**. It's a terse and expressive coding style that's easy on the mind and does more with less code. 
 
 
-##Why JavaScript?
+## Why JavaScript?
 
 JavaScript has many built-in features that play very nicely with a functional style of coding, and it is a language that is ubiquitous and easily accessible to everyone. You just need a web browser. 
 
 It's not a perfect language, and there are a bunch of things that operate very different than many other languages, but I will be pointing them out as they come. When coded the way it was meant to be coded, JavaScript is a very fun language rich with features to suit many types of programmers. I will be using as many ES6 features as are supported by the latest version of Chrome (version 59 at the time of writing).
 
 
-##A Tale of Two Brothers
+## A Tale of Two Brothers
 
 Here I will explain a little bit about each of the two paradigms I'll be covering in this text: imperative and functional (and, through it, declarative).
 
@@ -35,7 +35,7 @@ Here I will explain a little bit about each of the two paradigms I'll be coverin
 
 The most difficult part about learning functional programming is the shift in thinking required to write programs in it, so throughout the book you'll be shown many examples of the same code written both in an imperative and functional style. The programs will be broken down, showing the upsides and downsides of each programming paradigm. We will first start with the simplest building blocks of programming: statements, expressions, and functions.
 
-##Statements and Expressions
+## Statements and Expressions
 
 An *expression* is an unsimplified term that is able to be reduced down into a single value. `2+(5*3)` is an expression because it can be evaluated into one value: `17`. Functional coding emphasizes the use of expressions to get things done rather than statements. 
 
@@ -45,7 +45,7 @@ How can you program with just expressions? Surely programs need loops, mutable s
 
 
 
-##Variables and Names
+## Variables and Names
 
 FP is a lot different than imperative, and there are a few things that need to be reconceptualized for the style to be learned naturally, and this rethinking starts with variables. The imperative programmer's notion of variables is that they are named storage boxes for values. The functional programmer views them a little differently.
 
@@ -56,7 +56,7 @@ In imperative coding, making variables is called "variable assignment", assignin
 Instead of using `var` or `let`, name binding is going to be done with `const`. This keyword prevents the variable from being reassigned.
 
 
-##Functions Fly First-Class!
+## Functions Fly First-Class!
 
 In FP, functions are thrown around just as much as variables are in other languages. They're considered values just as much as numbers are, and are treated the same. Functions-as-values are called *first-class functions* - functions acting like normal data: able to be bound to a name, passed to a function, or returned from a function.
 
@@ -64,7 +64,7 @@ Imperative coding treats functions as named blocks of code that sometimes return
 
 For example, here's a function that adds two inputs:
 
-```
+```javascript
 function add (a, b) {
   return a + b
 }
@@ -75,25 +75,25 @@ function add (a, b) {
 4
 ```
 
-This is a function called 'add' that takes two numbers and gives you back their sum. A shorter way of saying roughly the same thing is:
+A shorter way of saying roughly the same thing is:
 
-```
+```javascript
 const add = (a, b) => a + b
 ```
 
-The variable `add` has the value of a function that takes two numbers and gives you back their sum. If this function gets the same inputs, it will, by nature, give you the same outputs every time, and it does nothing else with its inputs. This property is called "purity." 
+The variable `add` has the value of a function (remember: functions are first-class data). If this function gets the same inputs, it will, by nature, give you the same outputs every time, and it does nothing else with its inputs. This property is called "purity." 
 
 A function that is not pure is a function that does something other than returning a value. Logging something to the console, retrieving things from a database, updating program state, these are things that are not simply accepting and returning data. They instead invoke *side-effects*, breaking function purity. This is what we're trying to minimize. Being so fundamental to imperative style, you'll be surprised how few side effects your software actually needs.
 
 
 
-##Some Examples of Both Paradigms
+## Some Examples of Both Paradigms
 
 Here I'm going to show you a few small imperative programs and then refactor them into declarative programs by maximizing the amount of expressions and minimizing the amount of statements they employ.
 
 Here is a program that defines some basic arithmetic operations:
 
-```
+```javascript
 <body>
 <form method="get" action="">
     <input id="id1" type="number"><br>
@@ -166,7 +166,7 @@ The first step in doing this is to notice that getting the values of the input b
 
 These repeated actions can be captured with a single function which I'll call `idval()` that queries an element with its selector and returns its value. I'll throw in another one that gets only the element:
 
-```
+```javascript
 const idval = elem =>
     document
     .getElementById(elem)
@@ -177,13 +177,13 @@ const id = elem =>
     .getElementById(elem)
 ```
 
-The same thing can be done with a light version of jQuery. 
+(The same thing can be done with a light version of jQuery.)
 
 The second step is to realize that the values can be substituted for the variables and nothing is wrong with that. 
 
 Take the `add()` function above. Basically the only important thing this function does is alert a value, so let's make the `alert()` our focus. `window` is a top level value, and thus doesn't need to be referenced explicitly.
 
-```
+```javascript
 alert("Sum is:"+ z)
 ```
 
@@ -191,13 +191,13 @@ Now for `z`. `x` and `y` are the values for the two textboxes, so they can be su
 
 Now, to completely eliminate every bit of state, substitute that expression for `z`. I put it in a string template instead of a normal string:
 
-```
+```javascript
 alert(`Sum is: ${parseInt(idval("id1")) + parseInt(idval("id2"))}`)
 ```
 
 As a final step, put that into the `add()` function:
 
-```
+```javascript
 const add = () => 
     alert(`Sum is: ${
         parseInt(idval("id1")) + parseInt(idval("id2"))
@@ -208,7 +208,7 @@ const add = () =>
 
 The same can be done with the other arithmetic functions that follow that same pattern:
 
-```
+```javascript
 const sub = () =>
     alert(`Difference is: ${idval("id1") - idval("id2")}`)
 
@@ -228,7 +228,7 @@ const rem = () =>
 
 This last function can be done in two ways: one that involves `if` statements, and another that uses ternaries. Since some developers have an irrational hatred for ternaries, I will show both ways and you can pick which one you like better:
 
-```
+```javascript
 const equ = () => {
     const x = parseInt(idval("id1"))
           y = parseInt(idval("id2"))
@@ -256,7 +256,7 @@ Many coders find the second way much less readable, but I personally don't, I th
 
 Putting this all together, the whole program now looks like this:
 
-```
+```javascript
 <body>
 <form method="get" action="">
 <input id="id1" type="number"><br>
@@ -310,7 +310,7 @@ This is much cleaner, nicer, and more compact.
 
 Let's look at another example: finding the average of some numbers.
 
-```
+```javascript
 <body><script>
 var a=parseInt(prompt("Enter 1st score!"));
 var b=parseInt(prompt("Enter 2nd score!"));
@@ -347,15 +347,15 @@ There are largely the same symptoms we saw in the last program. Now that we have
 The program starts with three pieces of state for each piece of info, `a`, `b`, and `c`. First question to ask: "How are these being used in the rest of the program?"
 
 This particular program is simple I/O, displaying five pieces of data:
-The user prompt
-The data items' values
-The total score 
-The average score 
-An ending message 
+1. The user prompt
+2. The data items' values
+3. The total score 
+4. The average score 
+5. An ending message 
 
 A trick that my friends and I have used in this very situation is not annoying the user with three separate prompts, but instead use one and split the input:
 
-```
+```javascript
 const scores = prompt("Enter the scores (separated by spaces):")
     .split(" ")
     .map(score => parseInt(score))
@@ -363,13 +363,13 @@ const scores = prompt("Enter the scores (separated by spaces):")
 
 This is a little bit different than the above code, and there are some new concepts here. The user is prompted to type in all three numbers and the input is split into an array of three strings with the `split()` function. Since this returns an array of strings, we need to change these into numbers. 
 
-First, I apply the `map()` [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) on the array, which applies a specified function to each element and gives you back the new list. I passed into `map()` a function from `score` to `parseInt(score)`, which changes all the strings to numbers.
+First, I apply the `map()` function (docs [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)) on the array, which applies a specified function to each element and gives you back the new list. I passed into `map()` a function from `score` to `parseInt(score)`, which changes all the strings to numbers.
 
 This is a quick and clean pipeline from one data transformation to another that's very readable and minimizes mutable state. 
 
 Next is to substitute `a`, `b`, and `c` for the values in the `scores` array:
 
-```
+```javascript
 document.write([
     `1st score: ${scores[0]}`,
     `2nd score: ${scores[1]}`,
@@ -383,7 +383,7 @@ The next piece of state (and its output) is the sum of all the elements in the a
 
 To perform an operation on an array to get a single value back is called a [fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function)), or in JavaScript: `reduce()` (documentation [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)). This takes a function of two arguments (a *2-ary*, or *binary* function) and combines the entire array, starting with the first two elements and going until the original array has been gone through. 
 
-```
+```javascript
 const add = (a, b) => a + b
 const total = scores.reduce(add)
 
@@ -396,14 +396,14 @@ This is actually too long! We can shorten this up even more with more substituti
 
 `add` was put in purely for readability and doesn't need to be there. Taking it out, you get the arguably equally as readable
 
-```
+```javascript
 const total = scores
     .reduce((a, b) => a + b)
 ```
 
 Noting that we're still writing two lines of code for one operation, we can cut out the remaining piece of state and simply print the result we wanted in the first place:
 
-```
+```javascript
 document.write(
     "Total score: "+
     scores
@@ -413,7 +413,7 @@ document.write(
 
 Going off this theme, the same thing can be done to the next piece of output, the average:
 
-```
+```javascript
 var average = scores
     .reduce((a, b) => a + b) / 3
 document.write(
@@ -423,7 +423,7 @@ document.write(
 
 And then substituting again:
 
-```
+```javascript
 document.write(
     "Average score: "+
     scores.reduce((a, b) => a + b) / 3+
@@ -436,7 +436,7 @@ Since we're using the total in more than one place, it's smart to put the output
 
 There's a bit of a limit to exactly how much it's sensible to substitute everything, and the next bit of code is a prime example. If/else ladders are pretty much unavoidable when programming in imperative languages. Conditional constructs like guards in Haskell or match expressions in F# don't exist in JavaScript, so what we're left with is this set of conditions:
 
-```
+```javascript
 if (average<=50){
     document.write("Poor score!");}
 if (average>=51 && average<75){
@@ -449,7 +449,7 @@ if (average>=90){
 
 One thing you could do to reduce repeat code is to make a `between` function that tells whether a number is between two values, because we're comparing the score between an upper and lower bound. 
 
-```
+```javascript
 // compares a value x to a left and right bound (l and r)
 const between = (x, l, r) => x >= l && x < r
 ```
@@ -458,7 +458,7 @@ The function to do the comparing is simple, however it's not really necessary, s
 
 The whole program, then, looks like this:
 
-```
+```javascript
 <body><script>
 const scores = prompt("Enter the scores (separated by spaces):")
     .split(" ")
@@ -569,11 +569,6 @@ function sum(){
 
 
 ```
-<html>
-<head>
-<title>
-</title>
-
 <script language="javascript" type="text/javascript"> 
 answer1="London"
 
@@ -594,10 +589,7 @@ alert("correct");
 else {("incorrect");
 }
 }
-
 </script>
-
-</head>
 ```
 
 ```
