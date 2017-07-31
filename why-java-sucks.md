@@ -28,10 +28,8 @@ It's not just about the JVM, but the language itself. Java's method and object n
 BufferedReader br = new BufferedReader("foo.txt"); 
 ```
 
-You have to type `BufferedReader` twice in the same line. This is unnecessary code repetition (repeated for every new object instantiation, this quickly becomes an annoyance) and ultimately makes more work for the programmer. At the end of the day, it comes down to how much functionality is implemented, not how much code is written. If you retort with "but that's just how the language works with its use of class instantiation because it's a data abstraction and..." I contend that makes the situation *worse*. If you need code completion to write your project, there's a problem here. You should ask yourself why you're fine with this. 
-
-At this point, the more experienced Java programmers have already thought "but that point is crap because Java has an `auto` keyword that abstracts out the explicit naming of variable types." Not many constructs besides maybe the `auto` keyword do very much for the verbosity of code at the end of the day. If I have to write another line like
-`private static final unsigned int blah = 2;`
+You have to type `BufferedReader` twice in the same line. This is unnecessary code repetition (repeated for every new object instantiation, this quickly becomes an annoyance) and ultimately makes more work for the programmer. At the end of the day, it comes down to how much functionality is implemented, not how much code is written. Not many constructs do very much for the verbosity of code at the end of the day. If I have to write another line like
+`private static final int blah = 2;`
 inside a class...
 branching from a parent class....
 contained in an abstract base class.....
