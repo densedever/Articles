@@ -204,7 +204,7 @@ const add = () =>
     }`)
 ```
 
-**Hint:** *any function taking empty parentheses is an impure function.*
+**Hint:** *functions taking empty parentheses are often impure.*
 
 The same can be done with the other arithmetic functions that follow that same pattern:
 
