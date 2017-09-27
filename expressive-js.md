@@ -60,6 +60,14 @@ function add(a, b) {
 }
 ```
 
+This can also be written as
+
+```
+const add = (a, b) => a + b
+```
+
+without the `function` and `return` keywords, and the curly braces. This will be the most common function syntax I'll be using here.
+
 The two pieces of data the function takes in, the two arguments, are `a` and `b`. These are just two numbers, any numbers you like. You use this function by saying its name, `add`, putting the parentheses, and then putting two numbers inside, separated by commas. Example:
 
 ```js
