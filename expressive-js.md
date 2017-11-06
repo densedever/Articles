@@ -89,7 +89,72 @@ What I was just doing by running the `add` function and getting back a result is
 
 Now you've been introduced to a third type of data: numbers! Usually in programming, the number `3` is different than the number `3.0` due to how the hardware is. A whole number `3` would normally be called an `int` or an `integer`, and `3.0` would be called a `float`, or *floating-point value*. You don't need to worry about this in JavaScript though, because they're both just called `Number`s.
 
-Another data type is called an *array*, or a *list*. This puts together a bunch of different data into one structure - a data structure! Lists are surrounded by `[` and `]`, and the data is separated by commas. Some examples are:
+The next few things I'll go over are logical values and some common list and string methods, including the ones we just saw.
+
+## Logic and Lists
+
+I mentioned that JS can do logic before, so I will expound on that here.
+
+Logic is composed of a series of inferences from a set of starting conditions. These starting conditions are called *propositions*, or *axioms*, things you declare to be the case, whether that case be true or false.
+
+We make an axiom by using a *comparison operator*. These are === (equals), !== (not equals), < and <= (less and less or equals), > and >= (greater and greater or equals, and the logical operators && (and), || (or), and ! (not, opposite of).
+
+Examples:
+
+ ```
+> 2 + 2 !== 3 + 3
+true
+```
+```
+> const frozen = false
+> !frozen
+true
+```
+```
+> 5 < 5
+false
+```
+
+Some common things to do with data involve making decisions between two possibilities. These are done with if/then expressions. *If* your email is invalid, *then* you can't log in to the site.
+
+Since we're working with expressions, the expression that will give us this sort of branching decision is called a ternary, and is denoted with (`?:`).
+
+Here's a classic example: an absolute value function:
+
+```
+const abs = n => 
+    n > 0
+        ?  n
+        : -n
+```
+
+The ternary starts with an axiom, in this case `n > 0`, and then follows with the expression to return if that axiom is true. After this is a :, and then an alternative expression to return if the axiom actually happens to be false instead.
+
+Let's see another example: a function that accepts two arguments and returns the maximum of the two:
+
+```
+const max = (a, b) =>
+    a >= b
+        ? a
+        : b
+```
+
+The first number `a` is asked if it's greater than or equal to the second number `b`. If so, `a` is returned, otherwise `b` is returned.
+
+Let's say you want to make a door stop that checks your age before letting you into the club. This would just be two lines of code: 
+A variable to hold your age,
+A statement printing out the result.
+
+Here's what it would look like:
+
+```
+const age = 24
+console.log(age>=18
+    ? "Come in!"
+    : "You're too young!")
+```
+
+The data types you've seen so far are *Number*, *Function*, *String*, and *Bool*, however there are other types. Along with these types, there are also lists of types. *Array* is a type dealing with collections of data. *Object* is a type that deals with structured and organized data. Let's go more into these. Arrays put together a bunch of different data into one structure - a data structure! Lists are surrounded by `[` and `]`, and the data is separated by commas. I will use the word *list* when referring to the *Array* data type (just out of habit). For the mathematics-minded people, Arrays obey the laws of multisets: they're unordered, and can have duplicate elements. Some examples are:
 
 ```js
 [1, 2, 3]
@@ -99,6 +164,31 @@ Another data type is called an *array*, or a *list*. This puts together a bunch 
 ```
 
 The cool thing about these is that there are a whole bunch of different things you can do with them. They don't act like numbers, but there are a few key things that will define the rest of what we'll be doing here, so it will pay off to look at a few of the array's *methods*, which are functions that are attached to a data type.
+
+A property attached to every list is `length`, which returns how many elements are in the list.
+
+```js
+const myList = [1, 2, 3];
+console.log(myList.length); //=> 3
+```
+
+This is an appropriate transition into objects. Anything you can use `.` on is an Object. The thing after the `.` is called an *object property* if it's a non-function value, or an *object method* if it's a function value. Since `myList` has a property, of course that means Arrays are Objects too. So what properties and methods do lists have?
+
+You already learned about `length`. What about `concat`? This takes a list and sticks another one on it at the end:
+
+```js
+[1, 2].concat(3);
+//=> [1, 2, 3]
+```
+
+The mathy readers will notice when playing around with this method that a list with `concat` obeys the laws of semigroups.
+
+`.join()` takes a string, and puts everything in the list together using that string. It's kinda similar to `concat` in that it sticks lists together, except you can stick together any amount of lists, and you can pass in something to join them with:
+
+```js
+["Hello", "there"].join(", ");
+//=> "Hello, there"
+```
 
 Here's a playful one:
 
@@ -116,7 +206,7 @@ Here's one that joins a list of letters into a string:
 → "hello"
 ```
 
-`.join()` takes a string, and puts everything in the list together using that string. It was empty, so the letters were just smushed together by themselves.
+The string passed into `join` was empty, so the letters were just smushed together by themselves.
 
 You can also put more methods onto the end:
 
@@ -134,7 +224,7 @@ And more!
 
 You can see where I'm going with this...
 
-At each method, the original list at the beginning is being changed slightly until the last method application. This a smooth pipeline of transforms that the data is going through that gives a result at the end. This is a very powerful thing called *function composition*, which has entire branches of math behind it. Lists, their methods, and their being chained together like this make up an entire model of computation just by themselves, and this is what I'll be teaching you in this paper.
+At each method, the original list at the beginning is being changed slightly until the last method application. This is a smooth pipeline of transforms that the data is going through that gives a result at the end. This is a very powerful thing called *function composition*, which has entire branches of math behind it. Lists, their methods, and their being chained together like this make up an entire model of computation just by themselves, and this is what I'll be teaching you in this paper.
 
 Writing long pipelines is fun and all, but there should be a way to hold intermediate values, right? This is where I'm going to touch on arguably one of the most dangerous aspects of writing code that is both simple and predictable: storing data as program state.
 
@@ -156,10 +246,7 @@ Using the `const` keyword this way is not dangerous at all, because that just sa
 
 The reason `var` and `let` should be used very rarely (if at all) is that these allow you to change the values behind their names with another equals sign. This destroys any predictability in your code because the variables are no longer guaranteed to do what they say on their labels. These data are called *mutable state* because they're values that can mutate, or change.
 
-I will be using `const` as much as possible here, possible for every value I assign names to. Consider it good practice to do the same. 
+I will be using `const` as much as possible here, possibly for every value I assign names to. Consider it good practice to do the same. 
 
-The next few things I'll go over are logical values and some common list and string methods, including the ones we just saw.
-
-## Logic and Lists
 
 ## Part 2: The DOM
