@@ -62,7 +62,7 @@ function add(a, b) {
 
 This can also be written as
 
-```
+```js
 const add = (a, b) => a + b
 ```
 
@@ -101,16 +101,16 @@ We make an axiom by using a *comparison operator*. These are === (equals), !== (
 
 Examples:
 
- ```
+ ```js
 > 2 + 2 !== 3 + 3
 true
 ```
-```
+```js
 > const frozen = false
 > !frozen
 true
 ```
-```
+```js
 > 5 < 5
 false
 ```
@@ -121,7 +121,7 @@ Since we're working with expressions, the expression that will give us this sort
 
 Here's a classic example: an absolute value function:
 
-```
+```js
 const abs = n => 
     n > 0
         ?  n
@@ -132,7 +132,7 @@ The ternary starts with an axiom, in this case `n > 0`, and then follows with th
 
 Let's see another example: a function that accepts two arguments and returns the maximum of the two:
 
-```
+```js
 const max = (a, b) =>
     a >= b
         ? a
@@ -147,7 +147,7 @@ A statement printing out the result.
 
 Here's what it would look like:
 
-```
+```js
 const age = 24
 console.log(age>=18
     ? "Come in!"
