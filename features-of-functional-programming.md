@@ -1,6 +1,6 @@
 # Functional Programming in a Nutshell
 
-I saw a post in another group on the features of OOP and was inspired to put together my own post (because I hate OOP)!
+I saw a post in another group on the features of OOP and was inspired to put together my own post!
 
 Features of functional programming:
 
