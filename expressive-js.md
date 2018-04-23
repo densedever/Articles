@@ -97,7 +97,7 @@ I mentioned that JS can do logic before, so I will expound on that here.
 
 Logic is composed of a series of inferences from a set of starting conditions. These starting conditions are called *propositions*, or *axioms*, things you declare to be the case, whether that case be true or false.
 
-We make an axiom by using a *comparison operator*. These are === (equals), !== (not equals), < and <= (less and less or equals), > and >= (greater and greater or equals, and the logical operators && (and), || (or), and ! (not, opposite of).
+We make an axiom by using a *comparison operator*. These are `===` (equals), `!==` (not equals), `<` and `<=` (less and less or equals), `>` and `>=` (greater and greater or equals), and the logical operators `&&` (and), `||` (or), and `!` (not, opposite of).
 
 Examples:
 
@@ -117,7 +117,7 @@ false
 
 Some common things to do with data involve making decisions between two possibilities. These are done with if/then expressions. *If* your email is invalid, *then* you can't log in to the site.
 
-Since we're working with expressions, the expression that will give us this sort of branching decision is called a ternary, and is denoted with (`?:`).
+Since we're working with expressions, the expression that will give us this sort of branching decision is called a *ternary*, and is denoted with `?:`.
 
 Here's a classic example: an absolute value function:
 
